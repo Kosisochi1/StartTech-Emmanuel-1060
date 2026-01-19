@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - "Client/**"
+    paths:
+      - "starttech-application/Client/**"
 
 jobs:
   build:
@@ -21,26 +21,26 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: Client/package-lock.json
+          cache-dependency-path: starttech-application/Client/package-lock.json
 
       - name: Install dependencies
-        working-directory: Client
+        working-directory: starttech-application/Client
         run: npm ci
 
       - name: Run unit tests
-        working-directory: Client
+        working-directory: starttech-application/Client
         run: npm test -- --watch=false
 
       - name: Security scan (npm audit)
-        working-directory: Client
+        working-directory: starttech-application/Client
         run: npm audit --audit-level=high
 
       - name: Build production
-        working-directory: Client
+        working-directory: starttech-application/Client
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: react-build
-          path: Client/dist
+          path: starttech-application/dist
