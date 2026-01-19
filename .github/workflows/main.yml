@@ -34,7 +34,7 @@ jobs:
 
       - name: Security scan (npm audit)
         working-directory: starttech-application/Client
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=high --force
 
       - name: Build production
         working-directory: starttech-application/Client
