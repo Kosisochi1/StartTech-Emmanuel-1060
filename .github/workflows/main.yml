@@ -27,7 +27,7 @@ jobs:
         working-directory: starttech-application/Client
         run: npm ci
 
-      - name: Run unit tests  if(present)
+      - name: Run unit tests  (if present)
         working-directory: starttech-application/Client
         run: npm test -- --watch=false 
 
