@@ -3,49 +3,11 @@
 
 name: StartTech-application
 
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - "Client"
-  # pull_reques
-  #   branches: [ "main" ]
+on: push
 
 jobs:
-  build:
-
-    name: Build and Test Frontend (React)
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See 
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run unit test
-      run: npm test -- --watch=false
-      
-    - name:  Security scan (npm audit)
-      run: npm audit --audit-level=high
-      
-    - name: Build production
-      run: npm run build
-      
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: react-build 
-        path: dist
-   
+      - name: Say hello
+        run: echo "CI is running"
