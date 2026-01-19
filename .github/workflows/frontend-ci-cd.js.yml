@@ -8,7 +8,7 @@ on:
     branches: [ main ]
     paths:
       - "Client"
-  # pull_request
+  # pull_reques
   #   branches: [ "main" ]
 
 jobs:
