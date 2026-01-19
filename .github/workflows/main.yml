@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "Client/**"
-      
 
 jobs:
   build:
