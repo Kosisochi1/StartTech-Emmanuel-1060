@@ -9,7 +9,7 @@ on:
       - main
     # paths:
     #   - "../Client/**"
-  # pull_request:
+  # pull_request
   #   branches: [ "main" ]
 
 jobs:
