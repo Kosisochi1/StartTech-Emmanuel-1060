@@ -1,0 +1,45 @@
+name: Backend CI/CD Pipeline
+
+on: 
+  push:
+    branches: ["main"]
+
+    paths:
+      - "starttech-application/Server/**"
+
+
+jobs:
+  test:
+    name: Test and Scan Go app
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+
+      - name: Download dependencies
+        working-directory: starttech-application/Server/MuchToDo
+        run: go mod download
+
+      - name:  Run unit and Integration test
+        working-directory: starttech-application/Server/MuchToDo
+        run: go test ./... -v  -race
+      - name: Code quality (golangci-lint)
+        uses: golangci/golangci-lint-action@v6
+        with:
+
+          version: latest
+
+      - name: Vulnerability Scan
+        working-directory: starttech-application/Server/MuchToDo
+        run: |
+          go install golang.org/x/vunl/cmd/govulncheck@latest
+          govulncheck ./...
+        
+  
+
