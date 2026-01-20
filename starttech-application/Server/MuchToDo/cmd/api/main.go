@@ -151,7 +151,8 @@ func preloadUsernamesIntoCache(db *mongo.Client, cacheSvc cache.Cache, cfg confi
 
 	// 	else {
 	// 	slog.Info("No usernames found to preload.")
-	// }
+	 }
+}
 }
 
 // setupRouter initializes the Gin router and sets up the routes.
