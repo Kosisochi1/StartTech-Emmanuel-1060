@@ -9,11 +9,11 @@ FROM golang:1.25-alpine AS builder
 WORKDIR /build
 
 # Copy module files first for caching
-COPY application-code/go.mod application-code/go.sum ./
+COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy the full Go source code
-COPY ./application-code .
+COPY . .
 
 # Build the Go binary
 RUN CGO_ENABLED=0 GOOS=linux go build -o server ./cmd/api/main.go
