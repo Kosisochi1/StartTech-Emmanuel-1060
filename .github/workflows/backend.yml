@@ -98,7 +98,7 @@ jobs:
        - name: Trigger ASG 
          run: |
            aws autoscaling start-instance-refresh \
-           --auto-scaling-group-name ${{secrets.AGS_NAME}}
+           --auto-scaling-group-name ${{secrets.AGS_NAME}}\
            --preference MinHealthyPercentage=90,InstanceWarmup=120
        - name: Smoke test
          run: |
