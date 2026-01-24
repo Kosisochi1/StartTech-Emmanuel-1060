@@ -37,6 +37,8 @@ jobs:
         run: npm audit --audit-level=high --force || echo "High severity vulnerabilities found, check manually"
 
       - name: Build production
+        env:
+          VITE_API_BASE_URL: ${{secrets.VITE_API_BASE_URL}}
         working-directory: starttech-application/Client
         run: npm run build
         
