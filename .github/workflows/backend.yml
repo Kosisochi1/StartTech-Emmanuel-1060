@@ -104,8 +104,8 @@ jobs:
        - name: Build Go Binary
          working-directory: starttech-application/Server/MuchToDo
          run: | 
-          RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-          go build -o server ./cmd/api/
+           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+           go build -o server ./cmd/api/
        - name: Configure AWS credential
          uses: aws-actions/configure-aws-credentials@v4
          with:
