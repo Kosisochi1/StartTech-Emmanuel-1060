@@ -130,7 +130,7 @@ jobs:
        - name: Smoke test
          run: |
            sleep 60
-           curl -f http://main-alb-564425622.eu-west-1.elb.amazonaws.com/health
+           curl -f http://main-alb-926398273.eu-west-1.elb.amazonaws.com/health
            
          
 
