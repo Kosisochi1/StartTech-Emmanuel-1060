@@ -1,0 +1,17 @@
+[Unit]
+Description=StartTech Go Backend
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/starttech
+ExecStart=/opt/starttech/backend
+Restart=always
+RestartSec=5
+
+StandardOutput=append:/var/log/starttech/backend.log
+StandardError=append:/var/log/starttech/backend-error.log
+
+[Install]
+WantedBy=multi-user.target
