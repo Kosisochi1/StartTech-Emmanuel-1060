@@ -130,7 +130,7 @@ jobs:
        - name: Smoke test
          run: |
            sleep 60
-           curl -f ${{secrets.VITE_API_BASE_URL}}/health
+           curl -f http://main-alb-1489314065.eu-west-1.elb.amazonaws.com/health
            
          
 
