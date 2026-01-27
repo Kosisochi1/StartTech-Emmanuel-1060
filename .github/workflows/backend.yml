@@ -81,7 +81,7 @@ jobs:
            image-ref: backend:${{github.sha}}
            severity: CRITICAL,HIGH
        - name: Tag & push image
-        run: |
+         run: |
           IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
           IMAGE_LATEST=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
 
