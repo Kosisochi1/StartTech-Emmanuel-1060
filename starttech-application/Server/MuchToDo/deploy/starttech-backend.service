@@ -6,7 +6,6 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/opt/starttech
-ExecStartPre=/opt/starttech/fetch-ssm-env.sh
 ExecStart=/opt/starttech/backend
 EnvironmentFile=/opt/starttech/.env
 Restart=always
