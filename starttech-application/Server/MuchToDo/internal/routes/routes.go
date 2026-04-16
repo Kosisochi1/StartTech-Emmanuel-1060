@@ -16,7 +16,8 @@ import (
 // RegisterRoutes sets up all application routes.
 func RegisterRoutes(
 	// router *gin.Engine,
-	r gin.IRoutes,
+	// r gin.IRoutes,
+	r *gin.RouterGroup,
 	userHandler *handlers.UserHandler,
 	todoHandler *handlers.TodoHandler,
 	healthHandler *handlers.HealthHandler,
@@ -48,7 +49,7 @@ func RegisterRoutes(
 	}
 
 	// Protected routes
-	protected := router.Group("")
+	protected := r.Group("")
 	protected.Use(authMiddleware)
 	{
 		// Protected task routes (using /tasks to avoid conflict with frontend /todos route)
