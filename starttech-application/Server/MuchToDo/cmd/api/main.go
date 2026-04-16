@@ -186,7 +186,10 @@ func setupRouter(db *mongo.Client, cfg config.Config, tokenSvc *auth.TokenServic
 	router.Use(corsMiddleware)
 
 	// Register all routes
+	api := router.Group("/api")
+	{
 	routes.RegisterRoutes(router, userHandler, todoHandler, healthHandler, authMiddleware)
+		}
 
 	// A simple ping route for health checks
 	router.GET("/ping", func(c *gin.Context) {
