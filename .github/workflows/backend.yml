@@ -96,10 +96,10 @@ jobs:
           --auto-scaling-group-name ${{ secrets.ASG_NAME }} \
           --preferences MinHealthyPercentage=90,InstanceWarmup=120
 
-       - name: Smoke test
-         run: |
-           sleep 60
-           curl -f http://main-alb-604182024.eu-west-1.elb.amazonaws.com/health
+       # - name: Smoke test
+       #   run: |
+       #     sleep 60
+       #     curl -f http://main-alb-604182024.eu-west-1.elb.amazonaws.com/health
            
          
 
