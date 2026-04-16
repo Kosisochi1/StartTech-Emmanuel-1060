@@ -23,10 +23,10 @@ func RegisterRoutes(
 	authMiddleware gin.HandlerFunc,
 ) {
 	// Public routes
-	router.GET("/health", healthHandler.CheckHealth)
+	r.GET("/health", healthHandler.CheckHealth)
 
 	// Swagger documentation route
-	router.GET("/swagger/*any", func(c *gin.Context) {
+	r.GET("/swagger/*any", func(c *gin.Context) {
 		scheme := "http"
 		if c.Request.TLS != nil || strings.HasPrefix(c.Request.Header.Get("X-Forwarded-Proto"), "https") {
 			scheme = "https"
@@ -39,7 +39,7 @@ func RegisterRoutes(
 		ginSwagger.WrapHandler(swaggerFiles.Handler)(c)
 	})
 
-	authRoutes := router.Group("/auth")
+	authRoutes := r.Group("/auth")
 	{
 		authRoutes.POST("/register", userHandler.Register)
 		authRoutes.POST("/login", userHandler.Login)
