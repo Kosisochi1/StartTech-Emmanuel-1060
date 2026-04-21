@@ -158,14 +158,14 @@ if len(usernamesToCache) > 0 {
 func setupRouter(db *mongo.Client, cfg config.Config, tokenSvc *auth.TokenService, cacheSvc cache.Cache) *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	router.Use(func(c *gin.Context) {
-	if c.Request.Method == http.MethodOptions {
-		c.Status(http.StatusNoContent)
-		c.Abort()
-		return
-	}
-	c.Next()
-})
+// 	router.Use(func(c *gin.Context) {
+// 	if c.Request.Method == http.MethodOptions {
+// 		c.Status(http.StatusNoContent)
+// 		c.Abort()
+// 		return
+// 	}
+// 	c.Next()
+// })
 
 
 	// Initialize collections
@@ -183,13 +183,17 @@ func setupRouter(db *mongo.Client, cfg config.Config, tokenSvc *auth.TokenServic
 	authMiddleware := middleware.AuthMiddleware(tokenSvc, cfg)
 
 	// Apply CORS middleware to the router
+
 	router.Use(corsMiddleware)
 
 	// Register all routes
 	api := router.Group("/api")
 	{
+
 	routes.RegisterRoutes(api, userHandler, todoHandler, healthHandler, authMiddleware)
-		}
+
+	// routes.RegisterRoutes(router, userHandler, todoHandler, healthHandler, authMiddleware)
+	}
 
 	// A simple ping route for health checks
 	router.GET("/ping", func(c *gin.Context) {

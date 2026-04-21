@@ -9,39 +9,18 @@ import (
 
 // CORSMiddleware returns a CORS middleware using gin-contrib/cors
 func CORSMiddleware(allowedOrigins []string) gin.HandlerFunc {
-	// config := cors.DefaultConfig()
-	// config.AllowOrigins = allowedOrigins
-	// config.AllowCredentials = true
-	// config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With"}
-	// config.AllowMethods = []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"}
-
-		config := cors.Config{
-		// AllowOrigins:     []string{"*"}, // ✅ allowed now
-		// AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
-		// AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
-		// AllowCredentials: false, // ✅ IMPORTANT
-		// // MaxAge:           12 * time.Hour,
-
-		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
-	    AllowHeaders: []string{
-		         "Origin",
-		         "Content-Type",
-		           "Accept",
-		         "Authorization",
-	    },
-	    ExposeHeaders: []string{"Content-Length"},
-	    AllowOriginFunc: func(origin string) bool {
-		       return true // allow ALL origins
-	    },
-	    AllowCredentials: false,
-	}
+	config := cors.DefaultConfig()
+	config.AllowOrigins = allowedOrigins
+	config.AllowCredentials = true
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With"}
+	config.AllowMethods = []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"}
 
 	return cors.New(config)
 }
 
 func CORSMiddleware2() gin.HandlerFunc {
 	// Define allowed origins as a comma-separated string
-	originsString := "http://localhost:5173,http://starttech-frontend-dev-e05881c5.s3-website-eu-west-1.amazonaws.com,https://test.com"
+	originsString := "http://localhost:5173,https://test.com,https://d2dztk1euy9jkc.cloudfront.net/*,https://d2dztk1euy9jkc.cloudfront.net"
 	var allowedOrigins []string
 	if originsString != "" {
 		// Split the originsString into individual origins and store them in allowedOrigins slice
