@@ -205,8 +205,8 @@ func setupRouter(db *mongo.Client, cfg config.Config, tokenSvc *auth.TokenServic
 	})
 
 
-		router.GET("/api", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"message": "Welcome to MuchToDo API"})
+		// router.GET("/api", func(c *gin.Context) {
+		// c.JSON(http.StatusOK, gin.H{"message": "Welcome to MuchToDo API"})
 	})
 
 	// Test route to debug /todos issue
