@@ -20,7 +20,7 @@ func CORSMiddleware(allowedOrigins []string) gin.HandlerFunc {
 
 func CORSMiddleware2() gin.HandlerFunc {
 	// Define allowed origins as a comma-separated string
-	originsString := "http://localhost:5173,https://test.com,https://d1v23xz24elt3p.cloudfront.net/api,https://d1v23xz24elt3p.cloudfront.net,http://main-alb-504506301.eu-west-1.elb.amazonaws.com"
+	originsString := "http://localhost:5173,http://starttech-frontend-dev-0a9cd822.s3-website-eu-west-1.amazonaws.com,https://test.com,https://d1v23xz24elt3p.cloudfront.net/api,https://d1v23xz24elt3p.cloudfront.net,http://main-alb-504506301.eu-west-1.elb.amazonaws.com"
 	var allowedOrigins []string
 	if originsString != "" {
 		// Split the originsString into individual origins and store them in allowedOrigins slice
